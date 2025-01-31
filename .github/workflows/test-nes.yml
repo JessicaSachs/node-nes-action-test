@@ -1,0 +1,24 @@
+name: Test Node.js NES Setup
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js NES
+        uses: neverendingsupport/setup-node-nes@v4
+        with:
+          node-version: 16-nes
+          nes-registry-token: ${{ secrets.NES_REGISTRY_TOKEN }}
+      
+      - name: Test Node.js Installation
+        run: |
+          node -v
+          node index.js 
