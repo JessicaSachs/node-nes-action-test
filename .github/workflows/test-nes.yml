@@ -11,14 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup Node.js NES
-        uses: neverendingsupport/setup-node-nes@v4
+      - uses: neverendingsupport/setup-node-nes@v4.0.3
         with:
           node-version: 16-nes
           nes-registry-token: ${{ secrets.NES_REGISTRY_TOKEN }}
-      
       - name: Test Node.js Installation
         run: |
           node -v
-          node index.js 
+          node index.js
